@@ -1,0 +1,62 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 5px;
+}
+
+td,
+th {
+    border: 1px solid #3d5a80;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #98c1d98c;
+}
+tr:nth-child(even) {
+    background-color: #98c1d98c;
+}
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons [value='View'] {
+    background-color: #3d5a80;
+    border-radius: 5px;
+    width: 80px;
+    flex: 3;
+}
+.buttons [value='Edit'] {
+    background-color: #3d5a80;
+    border-radius: 5px;
+    width: 80px;
+    flex: 3;
+    margin-top: 10px;
+}
+.buttons [value='Delete'] {
+    background-color: #3d5a80;
+    border-radius: 5px;
+    width: 80px;
+    flex: 2;
+    margin-top: 10px;
+}
+
+.buttons [value='Delete'] :hover {
+    background-color: #293241;
+    cursor: pointer;
+}
+.buttons [value='Edit'] :hover {
+    background-color: #293241;
+    cursor: pointer;
+}
+.buttons [value='View'] :hover {
+    background-color: #293241;
+    cursor: pointer;
+}

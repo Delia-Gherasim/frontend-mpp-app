@@ -1,0 +1,66 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-container {
+    width: 100%;
+    max-width: 400px;
+}
+.form-container > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-container label {
+    flex: 1;
+    text-align: left;
+    padding-right: 10px;
+}
+input[type='text'] {
+    height: 20px;
+    padding-left: 15px;
+    margin: 10px;
+    border-color: #3d5a80;
+    background-color: aliceblue;
+    color: black;
+}
+input [type='date'],
+input[type='checkbox'] {
+    color: aliceblue;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buttons [value='Back'] {
+    background-color: #3d5a80;
+    border-radius: 5px;
+    width: 100px;
+    flex: 2;
+    margin-top: 10px;
+}
+.buttons [value='Save'] {
+    background-color: #3d5a80;
+    border-radius: 5px;
+    width: 100px;
+    flex: 2;
+    margin-top: 10px;
+}
+.buttons [value='Save']:hover {
+    background-color: #293241;
+    cursor: pointer;
+}
+.buttons [value='Back']:hover {
+    background-color: #293241;
+    cursor: pointer;
+}
+
+.form-container input[type='text'],
+.form-container input[type='date'] {
+    flex: 2;
+    width: 100%;
+    border-radius: 5px;
+}

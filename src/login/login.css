@@ -1,0 +1,53 @@
+.selected {
+    height: 100px;
+    border: 2px;
+    background-color: #ac9c8d;
+    border-radius: 10px;
+    box-shadow: 0 14px 14px 0 rgba(0, 0, 0, 0.25);
+    display: grid;
+}
+.notSelected {
+    height: 100px;
+    background-color: #d1c78d;
+    border-radius: 10px;
+    display: grid;
+}
+.list {
+    list-style-type: none;
+}
+.accountName {
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    /* padding-top: 10px; */
+    /* grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3; */
+}
+.accountType {
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    /* margin-top: 20px; */
+    /* margin-bottom: 10px; */
+    /* grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3; */
+}
+.LogInButton {
+    font-family: 'Times New Roman', Times, serif;
+    width: 100px;
+    margin-left: 15px;
+}
+/* .buttons {
+    align-items: end;
+    margin-right: 0px;
+} */
+/* .itemText {
+    /* display: block;
+} */
+.deleteButton {
+    width: 50px;
+}
+.editButton {
+    width: 50px;
+}
