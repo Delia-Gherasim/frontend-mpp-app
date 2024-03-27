@@ -1,17 +1,23 @@
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import IconButton from '@mui/material/IconButton';
 import {useState} from 'react';
+import {IDevice} from '../../model/item.type';
 import ConfirmationModel from './ConfirmationModel';
 import './DeviceList.style.css';
 import DeviceModel from './Model';
-import {IDevice} from './item.type';
 
 type Props = {
     list: IDevice[];
     onDeleteClickHandler: (data: IDevice) => void;
     onEditClickHandler: (data: IDevice) => void;
+    numberOfItems: number;
 };
 
 const DeviceList = (props: Props) => {
-    const {list, onDeleteClickHandler, onEditClickHandler} = props;
+    const {list, onDeleteClickHandler, onEditClickHandler, numberOfItems} =
+        props;
     const [showModel, setShowModel] = useState(false);
     const [confirmationModel, setConfirmationModel] = useState(false);
     const [dataToShow, setDataToShow] = useState(null as IDevice | null);
@@ -48,36 +54,54 @@ const DeviceList = (props: Props) => {
                         <th>Type</th>
                         <th>Brand</th>
                         <th>Owner</th>
+                        <th>Accessories</th>
+                        <th>Warranty</th>
+                        <th>Date</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {list.map((device) => (
+                    {list.slice(0, numberOfItems).map((device) => (
                         <tr key={device.id}>
                             <td>{device.type}</td>
                             <td>{device.brand}</td>
                             <td>{device.owner}</td>
+                            <td>{device.accessories ? 'Yes' : 'No'}</td>
+                            <td>{device.warranty ? 'Yes' : 'No'}</td>
+                            <td>{device.date.toDateString()}</td>
                             <td>
                                 <div className='buttons'>
-                                    <input
-                                        type='button'
-                                        value='View'
+                                    <IconButton
                                         onClick={() => viewItem(device)}
-                                    />
-                                    <input
-                                        type='button'
-                                        value='Edit'
+                                        style={{
+                                            color: '#DAA520',
+                                            borderRadius: '5px',
+                                        }}
+                                    >
+                                        <VisibilityIcon />
+                                    </IconButton>
+                                    <IconButton
                                         onClick={() =>
                                             onEditClickHandler(device)
                                         }
-                                    />
-                                    <input
-                                        type='button'
-                                        value='Delete'
+                                        style={{
+                                            color: '#DAA520',
+                                            borderRadius: '5px',
+                                        }}
+                                    >
+                                        <EditIcon />
+                                    </IconButton>
+                                    <IconButton
                                         onClick={() =>
                                             openConfirmationHandler(device)
                                         }
-                                    />
+                                        style={{
+                                            color: '#DAA520',
+                                            borderRadius: '5px',
+                                        }}
+                                    >
+                                        <DeleteIcon />
+                                    </IconButton>
                                 </div>
                             </td>
                         </tr>

@@ -1,0 +1,866 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Home > should open the TopBar Component 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div />
+    <div>
+      <article
+        class="article-header"
+      >
+        <header>
+          <h2
+            class="title"
+          >
+            Awesome App
+          </h2>
+        </header>
+      </article>
+    </div>
+  </body>,
+  "container": <div>
+    <article
+      class="article-header"
+    >
+      <header>
+        <h2
+          class="title"
+        >
+          Awesome App
+        </h2>
+      </header>
+    </article>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Home > should render the Home component 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <h3
+        style="float: right;"
+      >
+        Sorted by Date
+      </h3>
+      <section
+        class="section-content"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Type
+              </th>
+              <th>
+                Brand
+              </th>
+              <th>
+                Owner
+              </th>
+              <th>
+                Accessories
+              </th>
+              <th>
+                Warranty
+              </th>
+              <th>
+                Date
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                laptop
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                eu
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Mon Apr 01 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop8
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                eu
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Mon Apr 01 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop7
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                tu
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                Tue Apr 02 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop2
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                eu
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Sun Apr 07 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop4
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                eu
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Tue Apr 09 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop9
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                tu
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                Mon Apr 15 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop10
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                eu
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Mon Apr 15 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop11
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                tu
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                Mon Apr 15 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop12
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                eu
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Mon Apr 15 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop13
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                tu
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                Mon Apr 15 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop1
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                tu
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                Tue Apr 16 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop3
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                tu
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                Thu Apr 18 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop5
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                tu
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                No
+              </td>
+              <td>
+                Sat Apr 20 2024
+              </td>
+            </tr>
+            <tr>
+              <td>
+                laptop6
+              </td>
+              <td>
+                Asus
+              </td>
+              <td>
+                eu
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Yes
+              </td>
+              <td>
+                Sun Apr 21 2024
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </body>,
+  "container": <div>
+    <h3
+      style="float: right;"
+    >
+      Sorted by Date
+    </h3>
+    <section
+      class="section-content"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Type
+            </th>
+            <th>
+              Brand
+            </th>
+            <th>
+              Owner
+            </th>
+            <th>
+              Accessories
+            </th>
+            <th>
+              Warranty
+            </th>
+            <th>
+              Date
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              laptop
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              eu
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Mon Apr 01 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop8
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              eu
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Mon Apr 01 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop7
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              tu
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              Tue Apr 02 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop2
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              eu
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Sun Apr 07 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop4
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              eu
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Tue Apr 09 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop9
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              tu
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              Mon Apr 15 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop10
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              eu
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Mon Apr 15 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop11
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              tu
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              Mon Apr 15 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop12
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              eu
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Mon Apr 15 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop13
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              tu
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              Mon Apr 15 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop1
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              tu
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              Tue Apr 16 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop3
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              tu
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              Thu Apr 18 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop5
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              tu
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              No
+            </td>
+            <td>
+              Sat Apr 20 2024
+            </td>
+          </tr>
+          <tr>
+            <td>
+              laptop6
+            </td>
+            <td>
+              Asus
+            </td>
+            <td>
+              eu
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Yes
+            </td>
+            <td>
+              Sun Apr 21 2024
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Home > should render the topbar component 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div />
+    <div>
+      <article
+        class="article-header"
+      >
+        <header>
+          <h2
+            class="title"
+          >
+            Awesome App
+          </h2>
+        </header>
+      </article>
+    </div>
+  </body>,
+  "container": <div>
+    <article
+      class="article-header"
+    >
+      <header>
+        <h2
+          class="title"
+        >
+          Awesome App
+        </h2>
+      </header>
+    </article>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

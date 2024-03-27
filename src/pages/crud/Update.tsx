@@ -1,6 +1,6 @@
 import {useState} from 'react';
+import {IDevice} from '../../model/item.type';
 import './Create.style.css';
-import {IDevice} from './item.type';
 type Props = {
     data: IDevice;
     onBackButtonHandle: () => void;
@@ -56,6 +56,7 @@ const EditDevice: React.FC<Props> = ({
             date: new Date(date),
         };
         onSaveButtonHandler(newItem);
+        onBackButtonHandle();
     };
 
     return (

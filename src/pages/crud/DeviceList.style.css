@@ -5,43 +5,52 @@ table {
     border-radius: 5px;
 }
 
-td,
-th {
-    border: 1px solid #3d5a80;
+td {
     text-align: left;
     padding: 8px;
 }
 th {
-    background-color: #98c1d98c;
+    background-color: #212922;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    text-align: left;
+    padding: 8px;
+    color: #e6e6e6;
 }
 tr:nth-child(even) {
-    background-color: #98c1d98c;
+    background-color: #d6d6d6;
+    border-bottom: 1px solid #212922;
 }
 tr:nth-child(odd) {
-    background-color: white;
+    background-color: #e6e6e6;
+    border-bottom: 1px solid #212922;
 }
 
 .buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 
 .buttons [value='View'] {
-    background-color: #3d5a80;
+    background-color: #daa520;
+    color: black;
     border-radius: 5px;
     width: 80px;
     flex: 3;
 }
 .buttons [value='Edit'] {
-    background-color: #3d5a80;
+    background-color: #daa520;
+    color: black;
     border-radius: 5px;
     width: 80px;
     flex: 3;
     margin-top: 10px;
 }
 .buttons [value='Delete'] {
-    background-color: #3d5a80;
+    background-color: #daa520;
+    color: black;
     border-radius: 5px;
     width: 80px;
     flex: 2;
@@ -49,14 +58,11 @@ tr:nth-child(odd) {
 }
 
 .buttons [value='Delete'] :hover {
-    background-color: #293241;
     cursor: pointer;
 }
 .buttons [value='Edit'] :hover {
-    background-color: #293241;
     cursor: pointer;
 }
 .buttons [value='View'] :hover {
-    background-color: #293241;
     cursor: pointer;
 }

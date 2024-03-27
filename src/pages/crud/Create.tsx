@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
+import {IDevice} from '../../model/item.type';
 import './Create.style.css';
-import {IDevice} from './item.type';
 
 type Props = {
     onBackButtonHandle: () => void;
@@ -43,6 +43,10 @@ const AddDevice: React.FC<Props> = ({
 
     const onSaveButtonClicked = (e: any) => {
         e.preventDefault();
+        if (!type || !brand || !owner || !date) {
+            alert('Please fill in all required fields.');
+            return;
+        }
         const newItem: IDevice = {
             id: new Date().toJSON().toString(),
             type: type,
@@ -53,6 +57,7 @@ const AddDevice: React.FC<Props> = ({
             date: new Date(date),
         };
         onSaveButtonHandler(newItem);
+        onBackButtonHandle();
     };
 
     return (

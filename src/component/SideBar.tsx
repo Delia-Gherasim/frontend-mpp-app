@@ -13,32 +13,52 @@ const SideBar: React.FC<Props> = ({isOpen, handleToggle}) => {
             <div className={`sidebar-container ${isOpen ? 'show' : ''}`}>
                 <div className='content'>
                     <hr></hr>
-                    <Link to='/'>
-                        <img
-                            src='src\component\iconHouse.png'
-                            className='image'
-                            alt='Home'
-                        />
-                    </Link>
-                    <hr></hr>
-                    <Link to='/' className='sidebar-item'>
+                    <br></br>
+                    <Link
+                        to='/'
+                        className='sidebar-item'
+                        style={{color: '#E6E6E6'}}
+                    >
                         See Database
                     </Link>
                     <hr></hr>
-                    <Link to='/search' className='sidebar-item'>
+                    <Link
+                        to='/search'
+                        className='sidebar-item'
+                        style={{color: '#E6E6E6'}}
+                    >
                         Search
                     </Link>
                     <hr></hr>
-                    <Link to='/sort' className='sidebar-item'>
+                    <Link
+                        to='/sort'
+                        className='sidebar-item'
+                        style={{color: '#E6E6E6'}}
+                    >
                         Sort
                     </Link>
+                    <hr></hr>
+                    <Link
+                        to='/chart'
+                        className='sidebar-item'
+                        style={{color: '#E6E6E6'}}
+                    >
+                        Chart
+                    </Link>
+                    <hr></hr>
                 </div>
             </div>
-            {/* <div className='button'> */}
-            <button className='hide-button' onClick={handleToggle}>
+            <button
+                className='hide-button'
+                onClick={handleToggle}
+                style={{
+                    backgroundColor: '#DAA520',
+                    borderRadius: '5px',
+                    color: 'black',
+                }}
+            >
                 &#9776;
             </button>
-            {/* </div> */}
         </>
     );
 };

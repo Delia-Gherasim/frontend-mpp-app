@@ -1,5 +1,5 @@
+import {IDevice} from '../../model/item.type';
 import './Model.style.css';
-import {IDevice} from './item.type';
 
 type Props = {
     onClose: () => void;

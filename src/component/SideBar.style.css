@@ -5,11 +5,11 @@
     left: 0;
     width: 200px;
     height: 100%;
-    background-color: #98c1d9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #294936;
+    color: #e6e6e6;
+    box-shadow: #212922;
     transition: all 0.3s ease;
     z-index: 100;
-    color: black;
 }
 
 .content {
@@ -21,8 +21,11 @@
     padding: 20px;
     box-sizing: border-box;
     transition: left 0.3s ease;
+    color: #e6e6e6;
 }
-
+.Link {
+    color: #e6e6e6;
+}
 .hide-button {
     font-size: 18px;
     position: absolute;
@@ -51,5 +54,5 @@
 hr {
     margin: 10px 0;
     border: none;
-    border-top: 1px solid #293241;
+    border-top: 1px solid #294936;
 }
