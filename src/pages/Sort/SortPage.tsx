@@ -5,44 +5,62 @@ import {
     Select,
     SelectChangeEvent,
 } from '@mui/material';
-import React, {useState} from 'react';
+import {useEffect, useState} from 'react';
 import SideBar from '../../component/SideBar';
 import TopBar from '../../component/TopBar';
 import {IDevice} from '../../model/item.type';
 
-type Props = {
-    list: IDevice[];
-};
+const Sort = () => {
+    const [deviceList, setDeviceList] = useState<IDevice[]>([]);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [field, setField] = useState<keyof IDevice | ''>('');
 
-const Sort = (props: Props) => {
-    const [field, setField] = React.useState<keyof IDevice | ''>('');
+    useEffect(() => {
+        fetchData();
+    }, [field]);
+
+    const fetchData = () => {
+        if (!field) return;
+        const endpointMap: Record<keyof IDevice, string> = {
+            category: 'category',
+            type: 'type',
+            brand: 'brand',
+            owner: 'owner',
+            date: 'date',
+            id: '',
+            accessories: '',
+            warranty: '',
+        };
+
+        fetch(`http://localhost:5000/sort/${endpointMap[field]}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const devicesArray: IDevice[] = data.map((item: any) => ({
+                    id: item.id,
+                    category: item.category,
+                    type: item.type,
+                    brand: item.brand,
+                    owner: item.owner,
+                    accessories: item.accessories,
+                    warranty: item.warranty,
+                    date: new Date(item.date),
+                }));
+                setDeviceList(devicesArray);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    };
 
     const handleChange = (event: SelectChangeEvent<string>) => {
         setField(event.target.value as keyof IDevice);
     };
 
-    const {list} = props;
-
-    const sortedList = React.useMemo(() => {
-        if (field === 'date') {
-            return [...list].sort((a, b) => {
-                const valueA =
-                    a[field] instanceof Date ? a[field] : new Date(a[field]);
-                const valueB =
-                    b[field] instanceof Date ? b[field] : new Date(b[field]);
-                return valueA.getTime() - valueB.getTime();
-            });
-        } else if (Array.isArray(list) && field) {
-            return [...list].sort((a, b) => {
-                const valueA = (a[field] ?? '').toString().toLowerCase();
-                const valueB = (b[field] ?? '').toString().toLowerCase();
-                return valueA.localeCompare(valueB);
-            });
-        }
-        return list;
-    }, [field, list]);
-
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const handleSidebarToggle = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
@@ -88,6 +106,7 @@ const Sort = (props: Props) => {
                                 width: '200px',
                             }}
                         >
+                            <MenuItem value={'category'}>Category</MenuItem>
                             <MenuItem value={'type'}>Type</MenuItem>
                             <MenuItem value={'brand'}>Brand</MenuItem>
                             <MenuItem value={'owner'}>Owner</MenuItem>
@@ -97,6 +116,7 @@ const Sort = (props: Props) => {
                     <table>
                         <thead>
                             <tr>
+                                <th>Category</th>
                                 <th>Type</th>
                                 <th>Brand</th>
                                 <th>Owner</th>
@@ -106,8 +126,9 @@ const Sort = (props: Props) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {sortedList.map((device) => (
+                            {deviceList.map((device) => (
                                 <tr key={device.id}>
+                                    <td>{device.category}</td>
                                     <td>{device.type}</td>
                                     <td>{device.brand}</td>
                                     <td>{device.owner}</td>

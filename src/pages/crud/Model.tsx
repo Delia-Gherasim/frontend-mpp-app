@@ -15,6 +15,11 @@ const DeviceModel = (props: Props) => {
                 <h3>Viewing Device data for device number # {data.id}</h3>
                 <div>
                     <label className='label'>
+                        <b>Category:</b> {data.category}
+                    </label>
+                </div>
+                <div>
+                    <label className='label'>
                         <b>Type:</b> {data.type}
                     </label>
                 </div>

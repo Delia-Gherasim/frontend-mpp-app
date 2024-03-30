@@ -51,6 +51,7 @@ const DeviceList = (props: Props) => {
             <table>
                 <thead>
                     <tr>
+                        <th>Category</th>
                         <th>Type</th>
                         <th>Brand</th>
                         <th>Owner</th>
@@ -63,6 +64,7 @@ const DeviceList = (props: Props) => {
                 <tbody>
                     {list.slice(0, numberOfItems).map((device) => (
                         <tr key={device.id}>
+                            <td>{device.category}</td>
                             <td>{device.type}</td>
                             <td>{device.brand}</td>
                             <td>{device.owner}</td>

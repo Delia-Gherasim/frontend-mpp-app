@@ -8,21 +8,22 @@ import {
     SelectChangeEvent,
 } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SideBar from '../../component/SideBar';
 import TopBar from '../../component/TopBar';
-import {IDevice, PageEnum, dummyDeviceList} from '../../model/item.type';
+import {IDevice, PageEnum} from '../../model/item.type';
 import AddDevice from '../crud/Create';
 import DeviceList from '../crud/DeviceList';
 import EditDevice from '../crud/Update';
 
 function Home() {
-    const [deviceList, setDeviceList] = useState(dummyDeviceList as IDevice[]);
+    const [deviceList, setDeviceList] = useState<IDevice[]>([]);
     const [shownPage, setShowPage] = useState(PageEnum.list);
     const [dataToEdit, setDataToEdit] = useState({} as IDevice);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [nr, setNr] = useState(10);
     const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
 
     const showListPage = () => {
         setShowPage(PageEnum.list);
@@ -33,14 +34,38 @@ function Home() {
     };
 
     const addDevice = (newItem: IDevice) => {
-        setDeviceList([...deviceList, newItem]);
+        fetch('http://localhost:5000/crud', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newItem),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                fetchList();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     };
 
     const deleteDevice = (data: IDevice) => {
-        const indexToDelete = deviceList.indexOf(data);
-        const tempList = [...deviceList];
-        tempList.splice(indexToDelete, 1);
-        setDeviceList(tempList);
+        const url = `http://localhost:5000/crud/${data.id}`;
+        fetch(url, {
+            method: 'DELETE',
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                fetchList();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     };
 
     const editDeviceData = (data: IDevice) => {
@@ -49,11 +74,23 @@ function Home() {
     };
 
     const updateData = (data: IDevice) => {
-        const filteredData = deviceList.filter((x) => x.id === data.id)[0];
-        const indexOfData = deviceList.indexOf(filteredData);
-        const tempData = [...deviceList];
-        tempData[indexOfData] = data;
-        setDeviceList(tempData);
+        const url = `http://localhost:5000/crud/${data.id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                fetchList();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     };
 
     const handleSidebarToggle = () => {
@@ -62,6 +99,7 @@ function Home() {
 
     const handleChange = (event: SelectChangeEvent<number>) => {
         setNr(event.target.value as number);
+        setPage(1); // Reset page when number of items per page changes
     };
 
     const handleChangePage = (
@@ -71,10 +109,47 @@ function Home() {
         setPage(newPage);
     };
 
-    const displayedDevices = deviceList.slice(
-        (page - 1) * nr,
-        (page - 1) * nr + nr,
-    );
+    const fetchList = () => {
+        fetch(`http://localhost:5000/pagination?page=${page}&nr=${nr}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                const filteredData = data.items.map(
+                    (item: {
+                        id: any;
+                        category: any;
+                        type: any;
+                        brand: any;
+                        owner: any;
+                        accessories: any;
+                        warranty: any;
+                        date: string | number | Date;
+                    }) => ({
+                        id: item.id,
+                        category: item.category,
+                        type: item.type,
+                        brand: item.brand,
+                        owner: item.owner,
+                        accessories: item.accessories,
+                        warranty: item.warranty,
+                        date: new Date(item.date),
+                    }),
+                );
+                setDeviceList(filteredData);
+                setTotalPages(data.totalPages);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    };
+
+    useEffect(() => {
+        fetchList();
+    }, [page, nr]);
 
     return (
         <div className={`container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
@@ -106,7 +181,7 @@ function Home() {
                                 <AddIcon />
                             </IconButton>
                             <Pagination
-                                count={Math.ceil(deviceList.length / nr)}
+                                count={totalPages}
                                 page={page}
                                 onChange={
                                     handleChangePage as (
@@ -151,8 +226,9 @@ function Home() {
                                 </Select>
                             </FormControl>
                         </div>
+                        <div></div>
                         <DeviceList
-                            list={displayedDevices}
+                            list={deviceList}
                             onDeleteClickHandler={deleteDevice}
                             onEditClickHandler={editDeviceData}
                             numberOfItems={nr}
