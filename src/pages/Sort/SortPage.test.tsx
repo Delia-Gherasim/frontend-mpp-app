@@ -1,13 +1,13 @@
 import {render} from '@testing-library/react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {describe, expect, it} from 'vitest';
-import Home from './Home';
+import Sort from './SortPage';
 
-describe('Home', () => {
-    it('should render the Home component', () => {
+describe('Sort', () => {
+    it('should render the Sort page', () => {
         const renderedComp = render(
             <Router>
-                <Home />
+                <Sort />
             </Router>,
         );
         expect(renderedComp).toMatchSnapshot();

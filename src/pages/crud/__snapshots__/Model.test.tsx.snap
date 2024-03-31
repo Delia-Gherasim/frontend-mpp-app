@@ -1,0 +1,101 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DeviceModel > should match snapshot 1`] = `
+<div>
+  <div
+    class="modal"
+    id="myModal"
+  >
+    <div
+      class="modal-content"
+    >
+      <span
+        class="close"
+      >
+        ×
+      </span>
+      <h3>
+        Viewing Device data for device number # 
+        1
+      </h3>
+      <div>
+        <label
+          class="label"
+        >
+          <b>
+            Category:
+          </b>
+           
+          Category
+        </label>
+      </div>
+      <div>
+        <label
+          class="label"
+        >
+          <b>
+            Type:
+          </b>
+           
+          Type
+        </label>
+      </div>
+      <div>
+        <label
+          class="label"
+        >
+          <b>
+            Brand:
+          </b>
+           
+          Brand
+        </label>
+      </div>
+      <div>
+        <label
+          class="label"
+        >
+          <b>
+            Owner:
+          </b>
+           
+          Owner
+        </label>
+      </div>
+      <div>
+        <label
+          class="label"
+        >
+          <b>
+            Accessories:
+          </b>
+           
+          Yes
+        </label>
+      </div>
+      <div>
+        <label
+          class="label"
+        >
+          <b>
+            Warranty:
+          </b>
+           
+          No
+        </label>
+      </div>
+      <div>
+        <label
+          class="label"
+        >
+          <b>
+            Date:
+          </b>
+           
+          Sun Mar 31 2024 02:00:00 GMT+0200 (Eastern European Standard Time)
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;

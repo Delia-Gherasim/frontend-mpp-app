@@ -61,7 +61,7 @@ const ChartPage = () => {
                     data,
                 ).map(([type, percentage]) => ({
                     type,
-                    percentage: percentage as number, // Ensure percentage is of type number
+                    percentage: percentage as number,
                 }));
                 setDataForTypesElectronics(transformedData);
             })

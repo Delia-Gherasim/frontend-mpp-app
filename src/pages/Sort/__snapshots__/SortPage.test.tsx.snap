@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Home > should render the Home component 1`] = `
+exports[`Sort > should render the Sort page 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -71,102 +71,27 @@ exports[`Home > should render the Home component 1`] = `
           class="section-content"
         >
           <div
-            class="title-container"
-            style="display: flex; align-items: center;"
+            style="display: flex; justify-content: center; flex-direction: column; align-items: center;"
           >
-            <h3
-              class="title"
-              style="margin-right: 20px;"
+            <h2
+              style="text-align: center;"
             >
-              Device List:
-            </h3>
-            <button
-              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium add-device-button css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-              style="background-color: rgb(218, 165, 32); border-radius: 5px; color: black; margin-right: 200px;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="AddIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"
-                />
-              </svg>
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <nav
-              aria-label="pagination navigation"
-              class="MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root"
-              style="margin-top: 0px; width: 100%;"
-            >
-              <ul
-                class="MuiPagination-ul css-wjh20t-MuiPagination-ul"
-              >
-                <li>
-                  <button
-                    aria-label="Go to previous page"
-                    class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-disabled MuiPaginationItem-previousNext css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
-                    disabled=""
-                    tabindex="-1"
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon"
-                      data-testid="NavigateBeforeIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-                      />
-                    </svg>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    aria-label="Go to next page"
-                    class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-disabled MuiPaginationItem-previousNext css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
-                    disabled=""
-                    tabindex="-1"
-                    type="button"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon"
-                      data-testid="NavigateNextIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-                      />
-                    </svg>
-                  </button>
-                </li>
-              </ul>
-            </nav>
+              Sorted Items
+            </h2>
             <div
               class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-              style="border-radius: 10px; border-color: black; color: black; width: 100%; margin-left: 0px;"
+              style="border-radius: 10px; border-color: black; color: black;"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
-                data-shrink="true"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="false"
                 id="demo-simple-select-label"
               >
-                Number of devices
+                Field to sort by
               </label>
               <div
                 class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-                style="border-radius: 15px; border-color: black; color: black;"
+                style="border-radius: 15px; border-color: black; color: black; width: 200px;"
               >
                 <div
                   aria-controls=":r0:"
@@ -178,14 +103,18 @@ exports[`Home > should render the Home component 1`] = `
                   role="combobox"
                   tabindex="0"
                 >
-                  10
+                  <span
+                    class="notranslate"
+                  >
+                    ​
+                  </span>
                 </div>
                 <input
                   aria-hidden="true"
                   aria-invalid="false"
                   class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
                   tabindex="-1"
-                  value="10"
+                  value=""
                 />
                 <svg
                   aria-hidden="true"
@@ -203,18 +132,15 @@ exports[`Home > should render the Home component 1`] = `
                   class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                 >
                   <legend
-                    class="css-14lo706"
+                    class="css-yjsfm1"
                   >
                     <span>
-                      Number of devices to display
+                      Sort By: 
                     </span>
                   </legend>
                 </fieldset>
               </div>
             </div>
-          </div>
-          <div />
-          <div>
             <table>
               <thead>
                 <tr>
@@ -238,9 +164,6 @@ exports[`Home > should render the Home component 1`] = `
                   </th>
                   <th>
                     Date
-                  </th>
-                  <th>
-                    Actions
                   </th>
                 </tr>
               </thead>
@@ -318,102 +241,27 @@ exports[`Home > should render the Home component 1`] = `
         class="section-content"
       >
         <div
-          class="title-container"
-          style="display: flex; align-items: center;"
+          style="display: flex; justify-content: center; flex-direction: column; align-items: center;"
         >
-          <h3
-            class="title"
-            style="margin-right: 20px;"
+          <h2
+            style="text-align: center;"
           >
-            Device List:
-          </h3>
-          <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium add-device-button css-78trlr-MuiButtonBase-root-MuiIconButton-root"
-            style="background-color: rgb(218, 165, 32); border-radius: 5px; color: black; margin-right: 200px;"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="AddIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"
-              />
-            </svg>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </button>
-          <nav
-            aria-label="pagination navigation"
-            class="MuiPagination-root MuiPagination-text css-1oj2twp-MuiPagination-root"
-            style="margin-top: 0px; width: 100%;"
-          >
-            <ul
-              class="MuiPagination-ul css-wjh20t-MuiPagination-ul"
-            >
-              <li>
-                <button
-                  aria-label="Go to previous page"
-                  class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-disabled MuiPaginationItem-previousNext css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
-                  disabled=""
-                  tabindex="-1"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon"
-                    data-testid="NavigateBeforeIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-                    />
-                  </svg>
-                </button>
-              </li>
-              <li>
-                <button
-                  aria-label="Go to next page"
-                  class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-disabled MuiPaginationItem-previousNext css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
-                  disabled=""
-                  tabindex="-1"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon"
-                    data-testid="NavigateNextIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-                    />
-                  </svg>
-                </button>
-              </li>
-            </ul>
-          </nav>
+            Sorted Items
+          </h2>
           <div
             class="MuiFormControl-root MuiFormControl-fullWidth css-q8hpuo-MuiFormControl-root"
-            style="border-radius: 10px; border-color: black; color: black; width: 100%; margin-left: 0px;"
+            style="border-radius: 10px; border-color: black; color: black;"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
-              data-shrink="true"
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink="false"
               id="demo-simple-select-label"
             >
-              Number of devices
+              Field to sort by
             </label>
             <div
               class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
-              style="border-radius: 15px; border-color: black; color: black;"
+              style="border-radius: 15px; border-color: black; color: black; width: 200px;"
             >
               <div
                 aria-controls=":r0:"
@@ -425,14 +273,18 @@ exports[`Home > should render the Home component 1`] = `
                 role="combobox"
                 tabindex="0"
               >
-                10
+                <span
+                  class="notranslate"
+                >
+                  ​
+                </span>
               </div>
               <input
                 aria-hidden="true"
                 aria-invalid="false"
                 class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
                 tabindex="-1"
-                value="10"
+                value=""
               />
               <svg
                 aria-hidden="true"
@@ -450,18 +302,15 @@ exports[`Home > should render the Home component 1`] = `
                 class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="css-14lo706"
+                  class="css-yjsfm1"
                 >
                   <span>
-                    Number of devices to display
+                    Sort By: 
                   </span>
                 </legend>
               </fieldset>
             </div>
           </div>
-        </div>
-        <div />
-        <div>
           <table>
             <thead>
               <tr>
@@ -485,9 +334,6 @@ exports[`Home > should render the Home component 1`] = `
                 </th>
                 <th>
                   Date
-                </th>
-                <th>
-                  Actions
                 </th>
               </tr>
             </thead>

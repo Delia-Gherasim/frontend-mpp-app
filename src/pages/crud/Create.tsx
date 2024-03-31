@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { IDevice } from '../../model/item.type';
+import React, {useState} from 'react';
+import {IDevice} from '../../model/item.type';
 import './Create.style.css';
 
 type Props = {
@@ -58,13 +58,6 @@ const AddDevice: React.FC<Props> = ({
                     </div>
                     <div>
                         <label>Type:</label>
-                        {/* <select
-                            value={type}
-                            onChange={(e) => setType(e.target.value)}
-                        >
-                            <option value=''>Select Type</option>
-                            {category && <Types category={category} />}
-                        </select> */}
                         <input
                             type='text'
                             value={type}
@@ -73,13 +66,6 @@ const AddDevice: React.FC<Props> = ({
                     </div>
                     <div>
                         <label>Brand:</label>
-                        {/* <select
-                            value={brand}
-                            onChange={(e) => setBrand(e.target.value)}
-                        >
-                            <option value=''>Select Brand</option>
-                            {category && <Brands category={category} />}
-                        </select> */}
                         <input
                             type='text'
                             value={brand}
@@ -114,6 +100,7 @@ const AddDevice: React.FC<Props> = ({
                         <label>Date:</label>
                         <input
                             type='date'
+                            data-date-format='DD MMMM YYYY'
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
                         />

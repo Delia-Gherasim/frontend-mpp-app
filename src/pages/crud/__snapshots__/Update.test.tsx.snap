@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`AddDevice component > renders correctly 1`] = `
-<DocumentFragment>
+exports[`EditDevice > should match snapshot 1`] = `
+<div>
   <div
     class="container"
   >
@@ -46,7 +46,7 @@ exports[`AddDevice component > renders correctly 1`] = `
         </label>
         <input
           type="text"
-          value=""
+          value="Type"
         />
       </div>
       <div>
@@ -55,7 +55,7 @@ exports[`AddDevice component > renders correctly 1`] = `
         </label>
         <input
           type="text"
-          value=""
+          value="Brand"
         />
       </div>
       <div>
@@ -64,7 +64,7 @@ exports[`AddDevice component > renders correctly 1`] = `
         </label>
         <input
           type="text"
-          value=""
+          value="Owner"
         />
       </div>
       <div>
@@ -72,6 +72,7 @@ exports[`AddDevice component > renders correctly 1`] = `
           Accessories:
         </label>
         <input
+          checked=""
           type="checkbox"
         />
       </div>
@@ -88,9 +89,8 @@ exports[`AddDevice component > renders correctly 1`] = `
           Date:
         </label>
         <input
-          data-date-format="DD MMMM YYYY"
           type="date"
-          value=""
+          value="2024-03-31"
         />
       </div>
       <div
@@ -107,5 +107,5 @@ exports[`AddDevice component > renders correctly 1`] = `
       </div>
     </form>
   </div>
-</DocumentFragment>
+</div>
 `;

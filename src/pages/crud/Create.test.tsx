@@ -3,7 +3,7 @@ import {describe, expect, it} from 'vitest';
 import AddDevice from './Create';
 
 describe('AddDevice component', () => {
-    it('renders Adding correctly', () => {
+    it('renders correctly', () => {
         const {asFragment} = render(
             <AddDevice
                 onBackButtonHandle={() => {}}
