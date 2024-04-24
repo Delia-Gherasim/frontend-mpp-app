@@ -46,6 +46,14 @@ const SideBar: React.FC<Props> = ({isOpen, handleToggle}) => {
                         Chart
                     </Link>
                     <hr></hr>
+                    <Link
+                        to='/client'
+                        className='sidebar-item'
+                        style={{color: '#E6E6E6'}}
+                    >
+                        Clients
+                    </Link>
+                    <hr></hr>
                 </div>
             </div>
             <button

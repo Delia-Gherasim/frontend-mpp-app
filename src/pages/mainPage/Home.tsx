@@ -12,9 +12,9 @@ import React, {useEffect, useState} from 'react';
 import SideBar from '../../component/SideBar';
 import TopBar from '../../component/TopBar';
 import {IDevice, PageEnum} from '../../model/item.type';
-import AddDevice from '../crud/Create';
-import DeviceList from '../crud/DeviceList';
-import EditDevice from '../crud/Update';
+import AddDevice from '../deviceEntity/Create';
+import DeviceList from '../deviceEntity/DeviceList';
+import EditDevice from '../deviceEntity/Update';
 
 function Home() {
     const [deviceList, setDeviceList] = useState<IDevice[]>([]);
@@ -24,6 +24,34 @@ function Home() {
     const [nr, setNr] = useState(10);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [ws, setWs] = useState<WebSocket | null>(null);
+    const [serverError, setServerError] = useState(false);
+    const [internetError, setInternetError] = useState(false);
+
+    useEffect(() => {
+        const socket = new WebSocket('ws://localhost:5000');
+        setWs(socket);
+
+        socket.onopen = () => {
+            console.log('WebSocket connected');
+            syncOfflineData();
+            setInternetError(false);
+        };
+
+        socket.onerror = () => {
+            console.error('WebSocket error');
+            setInternetError(true);
+        };
+
+        socket.onmessage = (event) => {
+            const newData = JSON.parse(event.data);
+            setDeviceList((prevList) => [...prevList, newData]);
+        };
+
+        return () => {
+            socket.close();
+        };
+    }, []);
 
     const showListPage = () => {
         setShowPage(PageEnum.list);
@@ -33,80 +61,64 @@ function Home() {
         setShowPage(PageEnum.add);
     };
 
-    const addDevice = (newItem: IDevice) => {
-        fetch('http://localhost:5000/crud', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newItem),
-        })
-            .then((response) => {
+    const saveDeviceToLocalStorage = (device: IDevice) => {
+        const existingData = localStorage.getItem('offline_devices');
+        const offlineDevices = existingData ? JSON.parse(existingData) : [];
+        offlineDevices.push(device);
+        localStorage.setItem('offline_devices', JSON.stringify(offlineDevices));
+    };
+
+    const addDevice = async (newItem: IDevice) => {
+        console.log('Adding device...');
+        const isOffline = serverError || internetError;
+        if (isOffline) {
+            saveDeviceToLocalStorage(newItem);
+            console.log('Saved to LocalStorage due to offline status');
+        } else {
+            try {
+                const response = await fetch('http://localhost:5000/crud', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(newItem),
+                });
+
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
+
                 fetchList();
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error('Error:', error);
-            });
+                setServerError(true);
+                saveDeviceToLocalStorage(newItem);
+                console.log('Saved to LocalStorage due to server error');
+            }
+        }
     };
 
-    const deleteDevice = (data: IDevice) => {
-        const url = `http://localhost:5000/crud/${data.id}`;
-        fetch(url, {
-            method: 'DELETE',
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+    const syncOfflineData = async () => {
+        console.log('Syncing offline data...');
+        const isConnected = !(serverError || internetError);
+
+        if (isConnected) {
+            const existingData = localStorage.getItem('offline_devices');
+            if (existingData) {
+                const offlineDevices = JSON.parse(existingData);
+
+                try {
+                    for (const device of offlineDevices) {
+                        await addDevice(device);
+                    }
+
+                    localStorage.removeItem('offline_devices');
+                    console.log('Offline data synchronized successfully.');
+                } catch (error) {
+                    console.error('Error syncing offline data:', error);
                 }
-                fetchList();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    };
-
-    const editDeviceData = (data: IDevice) => {
-        setShowPage(PageEnum.edit);
-        setDataToEdit(data);
-    };
-
-    const updateData = (data: IDevice) => {
-        const url = `http://localhost:5000/crud/${data.id}`;
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                fetchList();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    };
-
-    const handleSidebarToggle = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
-
-    const handleChange = (event: SelectChangeEvent<number>) => {
-        setNr(event.target.value as number);
-        setPage(1); // Reset page when number of items per page changes
-    };
-
-    const handleChangePage = (
-        event: React.MouseEvent<HTMLButtonElement> | null,
-        newPage: number,
-    ) => {
-        setPage(newPage);
+            }
+        }
     };
 
     const fetchList = () => {
@@ -139,6 +151,7 @@ function Home() {
                         date: new Date(item.date),
                     }),
                 );
+                console.log(filteredData);
                 setDeviceList(filteredData);
                 setTotalPages(data.totalPages);
             })
@@ -146,10 +159,68 @@ function Home() {
                 console.error('Error fetching data:', error);
             });
     };
+    const deleteDevice = (data: IDevice) => {
+        const url = `http://localhost:5000/crud/${data.id}`;
+        fetch(url, {
+            method: 'DELETE',
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                setServerError(false);
+                fetchList();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                setServerError(true);
+            });
+    };
 
+    const editDeviceData = (data: IDevice) => {
+        setShowPage(PageEnum.edit);
+        setDataToEdit(data);
+    };
+
+    const updateData = (data: IDevice) => {
+        const url = `http://localhost:5000/crud/${data.id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                setServerError(false);
+                fetchList();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                setServerError(true);
+            });
+    };
     useEffect(() => {
         fetchList();
     }, [page, nr]);
+
+    const handleSidebarToggle = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
+    const handleChange = (event: SelectChangeEvent<number>) => {
+        setNr(event.target.value as number);
+    };
+
+    const handleChangePage = (
+        event: React.MouseEvent<HTMLButtonElement> | null,
+        newPage: number,
+    ) => {
+        setPage(newPage);
+    };
 
     return (
         <div className={`container ${isSidebarOpen ? 'sidebar-open' : ''}`}>
@@ -159,6 +230,16 @@ function Home() {
                 handleToggle={handleSidebarToggle}
             />
             <section className='section-content'>
+                {serverError && (
+                    <div style={{color: 'red'}}>
+                        Server Error. Please try again later.
+                    </div>
+                )}
+                {internetError && (
+                    <div style={{color: 'red'}}>
+                        Internet Error. Please check your internet connection.
+                    </div>
+                )}
                 {shownPage === PageEnum.list && (
                     <>
                         <div
@@ -192,7 +273,6 @@ function Home() {
                                 style={{
                                     marginTop: '0px',
                                     width: '100%',
-                                    // marginRight: '10px',
                                 }}
                             />
                             <FormControl
@@ -202,17 +282,11 @@ function Home() {
                                     borderColor: 'black',
                                     color: 'black',
                                     width: '100%',
-                                    marginLeft: '0px',
                                 }}
                             >
-                                <InputLabel id='demo-simple-select-label'>
-                                    Number of devices
-                                </InputLabel>
+                                <InputLabel>Number of devices</InputLabel>
                                 <Select
-                                    labelId='demo-simple-select-label'
-                                    id='demo-simple-select'
                                     value={nr}
-                                    label='Number of devices to display'
                                     onChange={handleChange}
                                     style={{
                                         borderRadius: '15px',
@@ -226,7 +300,6 @@ function Home() {
                                 </Select>
                             </FormControl>
                         </div>
-                        <div></div>
                         <DeviceList
                             list={deviceList}
                             onDeleteClickHandler={deleteDevice}

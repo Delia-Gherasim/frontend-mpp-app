@@ -9,6 +9,16 @@ export interface IDevice {
     date: Date;
 }
 
+export interface IClient {
+    id: number;
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+    owedSum: number;
+    extras: string;
+}
+
 // export const dummyDeviceList: IDevice[] = [
 //     {
 //         id: '1111',
