@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {IClient} from '../../model/item.type';
+import React, { useState } from 'react';
+import { IClient } from '../../model/item.type';
 import '../deviceEntity/Create.style.css';
 
 type Props = {
@@ -26,7 +26,7 @@ const AddClient: React.FC<Props> = ({
         }
 
         const newClient: IClient = {
-            id: new Date().getTime(), // Unique ID
+            id: new Date().getTime(), 
             name,
             surname,
             phone,
