@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import {IDevice} from '../../model/item.type';
+import React, { useState } from 'react';
+import { IDevice } from '../../model/item.type';
+import SearchClientForm from '../clientEntity/SearchClientForm';
 import './Create.style.css';
 
 type Props = {
@@ -19,6 +20,10 @@ const AddDevice: React.FC<Props> = ({
     const [warranty, setWarranty] = useState(false);
     const [date, setDate] = useState('');
 
+    const handleClientFound = (name: string, surname: string) => {
+        setOwner(`${name} ${surname}`);
+    };
+
     const onSaveButtonClicked = (e: React.FormEvent) => {
         e.preventDefault();
         if (!type || !brand || !owner || !date || !category) {
@@ -26,13 +31,13 @@ const AddDevice: React.FC<Props> = ({
             return;
         }
         const newItem: IDevice = {
-            id: new Date().getDate(),
-            category: category,
-            type: type,
-            brand: brand,
-            owner: owner,
-            accessories: accessories,
-            warranty: warranty,
+            id: new Date().getTime(), 
+            category,
+            type,
+            brand,
+            owner,
+            accessories,
+            warranty,
             date: new Date(date),
         };
         onSaveButtonHandler(newItem);
@@ -43,77 +48,89 @@ const AddDevice: React.FC<Props> = ({
         <>
             <div className='container'>
                 <h3 className='title'>Add New Device</h3>
-                <form className='form-container' onSubmit={onSaveButtonClicked}>
-                    <div>
-                        <label>Category:</label>
-                        <select
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
+                <div className='forms'>
+                    <div className='client-details'>
+                        <SearchClientForm onClientFound={handleClientFound} />
+                    </div>
+                    <div className='device-details'>
+                        <form
+                            className='form-container'
+                            onSubmit={onSaveButtonClicked}
                         >
-                            <option value=''>Select Category</option>
-                            <option value='Electronics'>Electronics</option>
-                            <option value='Appliances'>Appliances</option>
-                            <option value='Equipment'>Equipment</option>
-                        </select>
+                            <div>
+                                <label>Category:</label>
+                                <select
+                                    value={category}
+                                    onChange={(e) =>
+                                        setCategory(e.target.value)
+                                    }
+                                >
+                                    <option value=''>Select Category</option>
+                                    <option value='Electronics'>
+                                        Electronics
+                                    </option>
+                                    <option value='Appliances'>
+                                        Appliances
+                                    </option>
+                                    <option value='Equipment'>Equipment</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Type:</label>
+                                <input
+                                    type='text'
+                                    value={type}
+                                    onChange={(e) => setType(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <label>Brand:</label>
+                                <input
+                                    type='text'
+                                    value={brand}
+                                    onChange={(e) => setBrand(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <label>Accessories:</label>
+                                <input
+                                    type='checkbox'
+                                    checked={accessories}
+                                    onChange={(e) =>
+                                        setAccessories(e.target.checked)
+                                    }
+                                />
+                            </div>
+                            <div>
+                                <label>Warranty:</label>
+                                <input
+                                    type='checkbox'
+                                    checked={warranty}
+                                    onChange={(e) =>
+                                        setWarranty(e.target.checked)
+                                    }
+                                />
+                            </div>
+                            <div>
+                                <label>Date:</label>
+                                <input
+                                    type='date'
+                                    data-date-format='DD MMMM YYYY'
+                                    value={date}
+                                    onChange={(e) => setDate(e.target.value)}
+                                />
+                            </div>
+                            <div className='buttons'>
+                                <input
+                                    type='button'
+                                    value='Back'
+                                    onClick={onBackButtonHandle}
+                                />
+                                <input type='submit' value='Save' />
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <label>Type:</label>
-                        <input
-                            type='text'
-                            value={type}
-                            onChange={(e) => setType(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label>Brand:</label>
-                        <input
-                            type='text'
-                            value={brand}
-                            onChange={(e) => setBrand(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label>Owner:</label>
-                        <input
-                            type='text'
-                            value={owner}
-                            onChange={(e) => setOwner(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label>Accessories:</label>
-                        <input
-                            type='checkbox'
-                            checked={accessories}
-                            onChange={(e) => setAccessories(e.target.checked)}
-                        />
-                    </div>
-                    <div>
-                        <label>Warranty:</label>
-                        <input
-                            type='checkbox'
-                            checked={warranty}
-                            onChange={(e) => setWarranty(e.target.checked)}
-                        />
-                    </div>
-                    <div>
-                        <label>Date:</label>
-                        <input
-                            type='date'
-                            data-date-format='DD MMMM YYYY'
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
-                        />
-                    </div>
-                    <div className='buttons'>
-                        <input
-                            type='button'
-                            value='Back'
-                            onClick={onBackButtonHandle}
-                        />
-                        <input type='submit' value='Save' />
-                    </div>
-                </form>
+                </div>
             </div>
         </>
     );

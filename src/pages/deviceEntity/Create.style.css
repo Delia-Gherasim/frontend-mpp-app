@@ -49,11 +49,21 @@ input[type='checkbox'] {
     flex: 2;
     margin-top: 10px;
 }
+.buttons [value='Search For Client'] {
+    background-color: #3d5a80;
+    border-radius: 5px;
+    width: 150px;
+    flex: 2;
+}
 .buttons [value='Save']:hover {
     background-color: #293241;
     cursor: pointer;
 }
 .buttons [value='Back']:hover {
+    background-color: #293241;
+    cursor: pointer;
+}
+.buttons [value='Search For Client']:hover {
     background-color: #293241;
     cursor: pointer;
 }
@@ -63,4 +73,39 @@ input[type='checkbox'] {
     flex: 2;
     width: 100%;
     border-radius: 5px;
+}
+
+/* Layout forms horizontally */
+.forms {
+    display: flex;
+    flex-direction: row; /* Change to row to align forms side by side */
+    justify-content: space-between; /* Add spacing between forms */
+    width: 100%; /* Ensure full-width usage */
+}
+
+/* Ensure both form containers have equal space */
+.device-details,
+.client-details {
+    flex: 1; /* Equal width for both forms */
+    margin: 10px;
+}
+
+/* Style for individual forms */
+.form-container {
+    width: 90%; /* Adjusted width to fit within the container */
+    max-width: 500px; /* Ensure the form doesn't exceed certain width */
+}
+
+/* General styling for labels, inputs, and other elements */
+.form-container > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px; /* Add space between elements */
+}
+
+.form-container label {
+    flex: 1; /* Allow label to take up necessary space */
+    text-align: left;
+    padding-right: 10px;
 }
