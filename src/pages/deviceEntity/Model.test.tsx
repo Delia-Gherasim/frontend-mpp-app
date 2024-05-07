@@ -1,7 +1,7 @@
-import {render} from '@testing-library/react';
-import {describe, expect, it} from 'vitest';
-import {IDevice} from '../../model/item.type';
-import DeviceModel from './Model';
+import { render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { IDevice } from '../../model/item.type';
+import DeviceModel from './DeviceModel';
 
 const mockDevice: IDevice = {
     id: 1,

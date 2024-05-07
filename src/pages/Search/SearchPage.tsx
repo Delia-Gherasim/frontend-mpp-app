@@ -10,8 +10,6 @@ const Search = () => {
     const [tableVisible, setTableVisible] = useState(false);
     const [deviceList, setDeviceList] = useState<IDevice[]>([]);
     const [nr, setNr] = useState(10);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [phone, setPhone] = useState('');
@@ -76,7 +74,6 @@ const Search = () => {
             }));
             setDeviceList(filteredData);
             // console.log('DUPA FETCH', deviceList);
-            setDeviceList(filteredData);
         } catch (error) {
             console.error('Error fetching data:', error);
         }

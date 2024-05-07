@@ -1,11 +1,58 @@
-import {IDevice} from '../../model/item.type';
+import { useEffect, useState } from 'react';
+import { IClient, IDevice } from '../../model/item.type';
 import './Model.style.css';
+
 type Props = {
     onClose: () => void;
     data: IDevice;
 };
-const DeviceModel = (props: Props) => {
-    const {onClose, data} = props;
+
+const DeviceModel = ({ onClose, data }: Props) => {
+    const [clientData, setClientData] = useState<IClient | null>(null);
+
+    const getClientDataOfDevice = async (device: IDevice) => {
+        try {
+            const response = await fetch(
+                `http://localhost:5000/crud/getOwnerOfDevice`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        deviceId: device.id,
+                    }),
+                },
+            );
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const client = data[0]; 
+
+            if (client) {
+                const clientData = {
+                    id: client.id,
+                    name: client.name,
+                    surname: client.surname,
+                    phone: client.phone,
+                    email: client.email,
+                    owedSum: client.owedSum,
+                    extras: client.extras,
+                };
+                setClientData(clientData); 
+            }
+        } catch (error) {
+            console.error('Error fetching client data:', error);
+        }
+    };
+
+    useEffect(() => {
+        getClientDataOfDevice(data); 
+    }, [data]); 
+
     return (
         <div id='myModal' className='modal'>
             <div className='modal-content'>
@@ -30,7 +77,7 @@ const DeviceModel = (props: Props) => {
                 </div>
                 <div>
                     <label className='label'>
-                        <b>Owner:</b> {data.owner}
+                        <b>Owner:</b> {clientData ? `${clientData.name} ${clientData.surname}` : 'Loading...'}
                     </label>
                 </div>
                 <div>
