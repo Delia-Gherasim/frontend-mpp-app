@@ -1,8 +1,8 @@
-import {Button} from '@mui/material';
-import {useState} from 'react';
+import { Button } from '@mui/material';
+import { useState } from 'react';
 import SideBar from '../../component/SideBar';
 import TopBar from '../../component/TopBar';
-import {IClient, IDevice} from '../../model/item.type';
+import { IClient, IDevice } from '../../model/item.type';
 
 const Search = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
